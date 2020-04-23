@@ -19,14 +19,14 @@ int main(void)
     while (1)
     {
         int menu;
-        printf("\nMenu : User(1) vote(2) Start Vote(3) exit(0)\n");
+        printf("\nMenu--------------------------\n User(1)\n vote(2)\n Start Vote(3)\n exit(0)\n--------------------------\n");
         scanf("%d", &menu);
         printf("\n");
         if (menu == 1) // User
         {
             while (1)
             {
-                printf("\nMenu_User : Create New User(1) Read User(2) Editer User(3) Delete User(4) List User(5) Exit(0)\n");
+                printf("\nMenu_User--------------------------\n Create New User(1)\n Read User(2)\n Editer User(3)\n Delete User(4)\n List User(5)\n Exit(0)\n--------------------------\n");
                 scanf("%d", &menu);
                 printf("\n");
                 if (menu == 1) //Create New User
@@ -57,7 +57,7 @@ int main(void)
         {
             while (1)
             {
-                printf("\nMenu_Vote : Create New Vote(1) Read Vote(2) Editer Vote(3) Delete Vote(4) List Vote(5) exit(0)\n");
+                printf("\nMenu_Vote--------------------------\n Create New Vote(1)\n Read Vote(2)\n Editer Vote(3)\n Delete Vote(4)\n List Vote(5)\n exit(0)\n--------------------------\n");
                 scanf("%d", &menu);
                 printf("\n");
                 if (menu == 1) //Create new vote
@@ -117,6 +117,7 @@ void create_user()
             printf("Duplicated %s !\n", name);
             return;
         }
+        fprintf("%s",name);
         printf("age > ");
         scanf("%d", &age);
         printf("man(1) or woman(2) > ");
@@ -174,12 +175,11 @@ void read_vote()
     if (v_search_by_name(name) != NULL)
     {
         T_vote *p = v_search_by_name(name);
-        printf("Name > %s\n", v_getname(p));
-        printf("amount > %d\n", v_getamount(p));
-        printf("choise >\n");
+        printf("%s /", v_getname(p));
+        printf(" 선택지 > %d개\n", v_getamount(p));
         for (int i = 0; i < p->amount; i++)
         {
-            printf("%d. %s\n", i + 1, v_getchoice(p, i));
+            printf("%d. %s -> %d표\n", i + 1, v_getchoice(p, i),p->vote_box[i]);
         }
     }
     else
@@ -214,7 +214,7 @@ void editer_vote()
 
         while (1)
         {
-            printf("Editer Vote Amount(1) Editer Vote Choice(2) Exit(0) : ");
+            printf("--------------------------\n Editer Vote Amount(1)\n Editer Vote Choice(2)\n Exit(0)\n--------------------------\n");
             scanf("%d", &menu);
             if (menu == 1)
             {
@@ -308,7 +308,7 @@ void start_vote()
         scanf("%s", name);
         if (u_search_by_name(name) == NULL)
         {
-            printf("No such member :(\n");
+            printf("No such user :(\n");
         }
         else
         {
