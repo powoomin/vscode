@@ -26,4 +26,7 @@ void u_delete(T_user *p);
 int U_count();
 
 void u_get_all(T_user *a[]);
+void u_file_save();
+void u_add_file();
+
 
