@@ -23,7 +23,7 @@ T_vote *v_search_by_name(char *n) //
     }
     return NULL;
 }
-T_vote *v_search_by_name_index(char *n) //
+int v_search_by_name_index(char *n) //
 {
     int i;
     for (i = 0; i < MAX_VOTE; i++)
@@ -31,7 +31,7 @@ T_vote *v_search_by_name_index(char *n) //
         if (vote[i] && strcmp(vote[i]->name, n) == 0)
             return i;
     }
-    return NULL;
+    return 0;
 }
 
 void v_create(char *n, int a) //투표 정보 입력&저장
@@ -101,7 +101,7 @@ char *v_getname(T_vote *p)
 {
     return p->name;
 }
-int *v_getamount(T_vote *p)
+int v_getamount(T_vote *p)
 {
     return p->amount;
 }
@@ -122,7 +122,7 @@ void v_get_all(T_vote *a[])
     }
 }
 
-void v_start(T_vote *p, char name)
+void v_start(T_vote *p)
 {
     int choise;
     printf("%s\n", v_getname(p));
@@ -134,6 +134,7 @@ void v_start(T_vote *p, char name)
     scanf("%d", &choise);
     choise--;
     p->vote_box[choise]++;
+    p->total++;
 }
 void v_file_save()
 {
@@ -161,6 +162,7 @@ void v_file_save()
                 fscanf(fp, "%s %d", choice, &vote_box);
                 strcpy(p->choice[i], choice);
                 p->vote_box[i] = vote_box;
+                p->total += vote_box;
             }
             v_count++;
         }

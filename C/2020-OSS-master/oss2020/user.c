@@ -23,7 +23,7 @@ T_user *u_search_by_name(char *n) //
     }
     return NULL;
 }
-T_user *u_search_by_name_index(char *n) //
+int u_search_by_name_index(char *n) //
 {
     int i;
     for (i = 0; i < MAX_USER; i++)
@@ -31,7 +31,7 @@ T_user *u_search_by_name_index(char *n) //
         if (user[i] && strcmp(user[i]->name, n) == 0)
             return i;
     }
-    return NULL;
+    return 0;
 }
 void u_create(char *n, int a, int g) //유저 정보 입력&저장
 {
@@ -86,7 +86,7 @@ char *u_getname(T_user *p)
 {
     return p->name;
 }
-int *u_getage(T_user *p)
+int u_getage(T_user *p)
 {
     return p->age;
 }

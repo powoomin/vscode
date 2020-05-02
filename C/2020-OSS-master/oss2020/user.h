@@ -13,10 +13,10 @@ typedef struct st_user
 
 int available_user();              //유저를 추가할 공간이 남아 있는가?
 T_user *u_search_by_name(char *n); // 이름이 일치하는 유저 레코드 포인터 찾기
-T_user *u_search_by_name_index(char *n);   //이름이 일치하는 유저 레코드 인덱스 찾기
+int u_search_by_name_index(char *n);   //이름이 일치하는 유저 레코드 인덱스 찾기
 
 char *u_getname(T_user *p);
-int *u_getage(T_user *p);
+int u_getage(T_user *p);
 char *u_getgender(T_user *p);
 
 int u_first_available();              // 추가할 수 있는 가장 빠른 포인터 배열의 인덱스 찾기

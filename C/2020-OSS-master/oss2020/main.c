@@ -15,6 +15,8 @@ void list_vote();
 void start_vote(); //투표 시작
 void file_read();
 void file_save();
+//////
+void save_reportFile(); //각 투표별로 제일 많은 표를 얻은 선택지를 보고서 파일로 저장
 
 int main(void)
 {
@@ -23,7 +25,7 @@ int main(void)
     while (1)
     {
         int menu;
-        printf("\nMenu--------------------------\n User(1)\n vote(2)\n Start Vote(3)\n exit(0)\n--------------------------\n");
+        printf("\nMenu--------------------------\n User(1)\n vote(2)\n Start Vote(3)\n Save Report(4)\n exit(0)\n--------------------------\n");
         scanf("%d", &menu);
         printf("\n");
         if (menu == 1) // User
@@ -98,6 +100,10 @@ int main(void)
             //5. 투표하기
             //6. 현재 투표된 선택지 현황 전체 정리해서 보여주기     // 각 선택지에 투표된 수만 print한다.(익명) //나중에 실명 모드도 만들기
         }
+        else if (menu == 4)
+        {
+           save_reportFile();
+        }
         else if (menu == 0) //exit & file save
         {
             file_save();
@@ -123,7 +129,6 @@ void create_user()
             printf("Duplicated %s !\n", name);
             return;
         }
-        fprintf("%s",name);
         printf("age > ");
         scanf("%d", &age);
         printf("man(1) or woman(2) > ");
@@ -185,7 +190,7 @@ void read_vote()
         printf(" 선택지 > %d개\n", v_getamount(p));
         for (int i = 0; i < p->amount; i++)
         {
-            printf("%d. %s -> %d표\n", i + 1, v_getchoice(p, i),p->vote_box[i]);
+            printf("%d. %s -> %d표\n", i + 1, v_getchoice(p, i), p->vote_box[i]);
         }
     }
     else
@@ -291,7 +296,7 @@ void list_vote()
         printf("%d. %s / 선택지 %d개\n", i + 1, v_getname(p), v_getamount(p));
         for (int i = 0; i < v_getamount(p); i++)
         {
-            printf("\t(%d) %s -> %d표\n", i + 1, v_getchoice(p, i),p->vote_box[i]);
+            printf("\t(%d) %s -> %d표\n", i + 1, v_getchoice(p, i), p->vote_box[i]);
         }
     }
 }
@@ -300,9 +305,8 @@ void start_vote()
     int size = V_count();
     char name[20];
     int choose;
-    //5. 투표하기
-    //6. 현재 투표된 선택지 현황 전체 정리해서 보여주기     // 각 선택지에 투표된 수만 print한다.(익명) //나중에 실명 모드도 만들기
-    if (size == 0)  //1개라도 만들어진 투표 주제가 있는지 확인
+
+    if (size == 0)
     {
         printf("Nothing to vote :(\n");
     }
@@ -317,7 +321,7 @@ void start_vote()
         }
         else
         {
-            printf(":) Hello %s \n");
+            printf(":) Hello %s \n", name);
             T_vote *all_vote[MAX_USER];
             v_get_all(all_vote);
             for (int i = 0; i < size; i++)
@@ -328,11 +332,11 @@ void start_vote()
             printf("0. Exit\n");
             printf("\nChoose Vote Number : ");
             scanf("%d", &choose);
-            if(choose != 0)
+            if (choose != 0)
             {
-                choose --;
+                choose--;
                 T_vote *p = all_vote[choose];
-                v_start(p, name);
+                v_start(p);
             }
             //투표하기
         }
@@ -347,4 +351,54 @@ void file_save()
 {
     u_add_file();
     v_add_file();
+}
+void save_reportFile()
+{
+    FILE *fp = fopen("txt_file/report.txt", "wt");
+    if (fp == NULL)
+    {
+        printf("파일 열기 오류");
+    }
+    else
+    {
+        int size = V_count();
+        T_vote *all_vote[MAX_VOTE];
+        v_get_all(all_vote);
+        for (int i = 0; i < size; i++)
+        {
+            T_vote *p = all_vote[i];
+            int count[p->amount];
+            int count_num[p->amount];
+            for(int i=0;i<p->amount;i++)
+            {
+                count[i] = p->vote_box[i];
+                count_num[i] = i;
+            }
+            fprintf(fp, "%s\t\t총 투표수 : %d\n", p->name, p->total); 
+            for (int i = 0; i < p->amount; i++)
+            {
+                for(int j = 0; j< p->amount-i-1;j++)
+                {
+                    if(count[j]>count[j+1])
+                    {
+                        int save = count[j];
+                        count[j] = count[j+1];
+                        count[j+1] = save;
+
+                        int save_num = count_num[j];
+                        count_num[j] = count_num[j+1];
+                        count_num[j+1] = save_num;
+                    }
+                }
+            }
+            int rank=0;
+            for(int i=p->amount-1;i>=0;i--)
+            {
+                rank++;
+                fprintf(fp, "\t%d위 %s\n\t\t득표수 : %d\n",rank, p->choice[count_num[i]], p->vote_box[count_num[i]]);
+            }
+            fprintf(fp,"\n");
+        }
+    }
+    fclose(fp);
 }
