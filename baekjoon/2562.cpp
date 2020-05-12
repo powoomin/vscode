@@ -1,3 +1,6 @@
+/*
+1차배열에서 제일 큰 숫자를 찾아 출력하고 몇번째 리스트에 몇번째인지 출력
+*/
 #include <iostream>
 using namespace std;
 int main(void)
