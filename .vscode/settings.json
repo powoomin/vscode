@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "ratio": "c",
+        "algorithm": "c",
+        "ostream": "cpp",
+        "iostream": "cpp",
+        "typeinfo": "c",
+        "user.h": "c",
+        "stdio.h": "c",
+        "vote.h": "c",
+        "10039.C": "cpp"
+    }
+}
