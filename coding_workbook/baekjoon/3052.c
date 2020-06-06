@@ -26,4 +26,36 @@
 힌트
 39, 40, 41, 42, 43, 44, 82, 83, 84, 85를 42로 나눈 나머지는 39, 40, 41, 0, 1, 2, 40, 41, 0, 1이다. 서로 다른 값은 모두 6개가 있다.
 */
+#include <stdio.h>
+int main(void)
+{
+    int a[10];
+    for (int i = 0; i < 10; i++)
+    {
+        a[i] = -1;
+    }
+    int Bool = 0;
 
+    for (int i = 0; i < 10; i++)
+    {
+        int N, n, b = 0;
+        scanf("%d", &N);
+        n = N % 42;
+        for (int j = 0; j < i; j++)
+        {
+            if (n == a[j])
+            {
+                Bool++;
+                b = 1;
+                break;
+            }
+        }
+
+        if (b == 1)
+        {
+            continue;
+        }
+        a[i] = n;
+    }
+    printf("%d\n", 10 - Bool);
+}
