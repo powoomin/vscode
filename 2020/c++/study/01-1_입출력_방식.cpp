@@ -5,7 +5,7 @@
 #include <iostream>
 int Cout();
 int Cin();
-int main()
+int main()*
 {
     while (1)
     {
