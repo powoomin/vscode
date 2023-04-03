@@ -32,8 +32,16 @@ int slist_length (slist * l)
 
 int slist_search (slist * l, int (* elem_cond)(void * e))
 {
-	int i = elem_cond(l->head.elem);
-	return 0;
+	int index = 0;
+	for(slist_node *n = l->head.next; n != 0x0; n = n->next)
+	{
+		if(elem_cond(n->elem))
+		{
+			return index;
+		}
+		index++;
+	}
+	return -1;
 }
 
 int slist_add (slist * l, void * e)
@@ -69,7 +77,19 @@ int slist_add (slist * l, void * e)
 
 int slist_remove (slist * l, int i, void * e)
 {
-	return 0;
+	slist_node *n = l->head.next;
+	for(int j = 0; j < i ; j++)
+	{
+		n = n->next;
+	}
+	memcpy(e, n->elem, l->elem_size);
+	
+	n->next->prev = n->prev; 
+	n->prev->next = n->next;
+
+	free(n);
+
+	return 1;
 }
 
 void slist_print (slist * l, void (* elem_print)(void * e))
@@ -82,16 +102,15 @@ void slist_print (slist * l, void (* elem_print)(void * e))
 		printf(" ");
 		
 	}
-	printf("\n\nprev : ");
-	for(i = l->tail.prev; i != 0x0; i = i->prev)
-	{
-		elem_print(i->elem);
-		printf(" ");
-		
-	}
+	printf("\n");
 }
 
 slist * slist_merge(slist * l1, slist * l2)
 {
-	return 0;
+	slist * n;
+	int count = slist_length(l1) + slist_length(l2);
+
+	
+	l2->head.next->prev = l1->tail.prev->prev;
+	return l1;
 }

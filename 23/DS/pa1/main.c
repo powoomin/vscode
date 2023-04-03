@@ -75,19 +75,24 @@ int test_slist_search_remove ()
 
 	int index ;
 	index = slist_search(l, gentry_cond) ;
-
 	gentry e ;
+	
+	slist_print(l, gentry_print) ;
 	slist_remove(l, index, &e) ;
 	slist_print(l, gentry_print) ;
+	printf("e = %s, %d\n",e.name, e.score);
+
+	printf("\n");
 
 	index = slist_search(l, gentry_cond) ;
+	slist_print(l, gentry_print) ;
 	slist_remove(l, index, &e) ;
 	slist_print(l, gentry_print) ;
+	printf("e = %s, %d\n",e.name, e.score);
 
 	slist_free(l) ;
 	return 0 ;
 }
-
 
 int test_slist_merge ()
 {
@@ -121,8 +126,8 @@ int test_slist_merge ()
 
 int main ()
 {
-	test_slist_add() ;
-	//``test_slist_search_remove() ;
-	//test_slist_merge() ;
+	//test_slist_add() ;
+	//test_slist_search_remove() ;
+	test_slist_merge() ;
 	return 0 ;
 }
