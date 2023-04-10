@@ -19,10 +19,10 @@ void print_result (int * a, int a_length, int k)
 			break ;
 		}
 	}
-	// if (first_ge < last_l) {
-	// 	printf("Wrong answer\n") ;
-	// 	exit(1) ;
-	// }
+	if (first_ge < last_l) {
+		printf("Wrong answer\n") ;
+		exit(1) ;
+	}
 
 	for (int i = 0 ; i < a_length ; i++)
 		printf("%d ", a[i]) ;
@@ -31,19 +31,23 @@ void print_result (int * a, int a_length, int k)
 
 void task (int * a, int a_length, int k)
 {
-	int i = 0;
+	int pivot = k;
+	int i =0 ,j = a_length-1 ;
 	while(1)
 	{
-		if(a[i]<=a[i+1]) i++;
+		if(i >= j) break;
+
+		if(a[i] > pivot && a[j] < pivot)
+		{
+			int d = a[i];
+			a[i] = a[j];
+			a[j] = d;
+		}
 		else
 		{
-			int x = a[i];
-			a[i] = a[i+1];
-			a[i+1] = x;
-			i = 0;
+			if(a[i] < pivot) i++;
+			if(a[j] > pivot) j--;
 		}
-		if(i == a_length-1) 
-			break;
 	}
 }
 
