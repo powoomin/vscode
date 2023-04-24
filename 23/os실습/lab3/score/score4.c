@@ -254,7 +254,7 @@ void file_save_data(Score_list * l)
 {
     FILE * fp;
     fp = fopen("score.txt", "wt");
-
+    
     for (int i = 0; i < l->num_entries; i++)
     {
         char * name = l->entries[i].name;
