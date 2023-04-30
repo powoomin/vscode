@@ -4,15 +4,17 @@
 int map[50][50];
 int visited[50][50];
 int land_cnt;
+int b_size_map;
+int s_size_map;
 
-int x[8] = {1, -1, 0, 0, 1, 1, -1, -1};
-int y[8] = {0, 0, 1, -1, 1, -1, 1, -1};
+
+int x[4] = {1, -1, 0, 0};
+int y[4] = {0, 0, 1, -1};
 
 struct Node{
     int x;
     int y;
     struct Node * next;
-    
 };
 
 void bfs(struct Node* head, int w, int h);

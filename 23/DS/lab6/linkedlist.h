@@ -42,6 +42,7 @@ class LinkedList {
 		void print () ;
 } ;
 
+/**/
 
 template <class T>
 ListNode<T>::ListNode () 
