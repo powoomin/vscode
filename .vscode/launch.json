@@ -6,6 +6,30 @@
     "configurations": [
         {
             "type": "java",
+            "name": "T",
+            "request": "launch",
+            "mainClass": "ch11.T"
+        },
+        {
+            "type": "java",
+            "name": "t",
+            "request": "launch",
+            "mainClass": "t"
+        },
+        {
+            "type": "java",
+            "name": "RecursionDemo",
+            "request": "launch",
+            "mainClass": "RecursionDemo"
+        },
+        {
+            "type": "java",
+            "name": "add_function",
+            "request": "launch",
+            "mainClass": "add_function"
+        },
+        {
+            "type": "java",
             "name": "example/MainClass",
             "request": "launch",
             "mainClass": "com.example/MainClass"

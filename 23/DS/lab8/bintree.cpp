@@ -39,6 +39,8 @@ bool Node::addRight (Node * n)
 	return true ;
 }
 
+//-------------------
+
 bool Node::isAncestor (Node * n) 
 {	
 	Node* temp = this;
@@ -79,7 +81,6 @@ bool Node::isDescendant (Node * n) // Ver 2
 	return false;
 }
 
-
 Tree::Tree (Node * n) 
 {
 	this->root = n ; 
@@ -103,6 +104,8 @@ Tree::~Tree ()
 		delete n ;
 	}
 }
+
+//-------------------------
 
 bool Tree::isValid ()
 {
@@ -165,7 +168,7 @@ bool Tree::isComplete ()
 	int state = 2 ;
 
 	while(nodes.size() > 0) {
-		Nodes * n = nodes.front();
+		Node * n = nodes.front();
 		nodes.pop();
 
 		if(n->left)
@@ -209,7 +212,6 @@ bool Tree::isComplete ()
 	return true ;
 }
 
-
 /*
 bool Tree::isComplete ()
 {
@@ -243,8 +245,6 @@ bool Tree::isComplete ()
 	return true ;
 }
 */
-
-
 
 int Tree::numNodes () 
 {
