@@ -102,12 +102,12 @@ int heap_remove(heap_t *h, void *buf)
 	int curr = 1;
 
 	while (!(h->size < left(curr) ||
-			cmp(h, 1, left(1)) < 0 &&
+			cmp(h, curr, left(1)) < 0 &&
 			(h->size < reigth(curr) ||
-			cmp(h, 1, right(1)) < 0)))
+			cmp(h, curr, right(1)) < 0)))
 	{
 		if (h->size < right(curr) ||
-			 cmp(h, left(1), right(1)) < 0)
+			 cmp(h, left(curr), right(curr)) < 0)
 		{
 			swap(h, curr, left(curr));
 		}

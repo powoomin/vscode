@@ -11,6 +11,12 @@ typedef
 	}
 	person_t ;
 
+char * print_person (void * e) 
+{
+	person_t * p = (person_t *) e ;
+	return p->name ;
+}
+
 int person_cmp (void *e1, void *e2)
 {
 	person_t * p1 = (person_t *) e1 ;
@@ -20,6 +26,18 @@ int person_cmp (void *e1, void *e2)
 		return p1->month - p2->month ;
 
 	return p1->day - p2->day ;
+}
+
+void test_case_1_delete(heap_t *h)
+{
+	person_t p ;
+	heap_delete(h, "Tim");
+}
+
+void test_case_2_print(heap_t *h)
+{
+	printf("\n<test_case_2_print>\n");
+	heap_print(h, print_person);
 }
 
 int main ()
@@ -41,12 +59,19 @@ int main ()
 		heap_insert(h, &(persons[i])) ;
 	}
 
-	while (heap_size(h) > 0) {
-		person_t p ;
 
-		heap_remove(h, &p) ;
-		printf("%s\n", p.name) ;
-	}
+	// while (heap_size(h) > 0) {
+	// 	person_t p ;
+
+	// 	heap_remove(h, &p) ;
+	// 	printf("%s\n", print_person(&p)) ;
+	// }
+
+	//test_case_1_delete(h);
+	test_case_2_print(h);
+
+
 
 	return 0 ;
 }
+
