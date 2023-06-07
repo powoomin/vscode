@@ -30,9 +30,9 @@ for(int i=0 ; i<10 ; i++)
 	d[i].l = strlen(d[i].s);
 }
 
+word_t bucket[27][10];
+bucket = (word_t*)malloc(sizeof(word_t));
 
-
-//
 
 // fixme end------
 	for(int i=0 ; i<10 ; i++)
