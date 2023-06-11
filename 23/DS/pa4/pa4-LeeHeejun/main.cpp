@@ -24,13 +24,29 @@ int main ()
 	t->insert(76, values[10]) ;
 	t->insert(80, values[11]) ;
 
+
 	t->print() ;
 
-	std::cout<<"-------------"<<std::endl;
+	if(t->erase(44))
+		printf("deleted\n");
+	else
+		printf("fail to delete cannot find\n");
 
-	//FIXME
-	t->erase(97);
-	t->print();
+	t->print() ;
+
+	if(t->erase(32))
+		printf("deleted\n");
+	else
+		printf("fail to delete cannot find\n");
+
+	t->print() ;
+
+	if(t->erase(76))
+		printf("deleted\n");
+	else
+		printf("fail to delete cannot find\n");
+
+	t->print() ;
 
 	delete t ;
 

@@ -108,51 +108,7 @@ Value BST::find(Key k)
 bool BST::erase(Key k)
 {
 	// FIXME
-	Node *i = this->root;
-
-	while (i->isInternal())
-	{
-		if (i->k == k)
-		{
-			if(i->left->k == 0 && i->right->k == 0)
-			{
-				delete i;
-			}
-			else
-			{
-				if(i->left->k == 0 && i->right->k != 0)
-				{
-					i->right->parent = i->parent;
-					delete i;
-				}
-				else if(i->left->k != 0 && i->right->k == 0)
-				{
-					i->left->parent = i->parent;
-					delete i;
-				}
-				else
-				{
-					if(i->right->left->k != 0)
-					{
-						i->right->left->parent = i->parent;
-						i->right->parent = i->right->left;
-						i->left->parent = i->right->left;
-						delete i;
-					}
-					else if()
-				}
-			}
-			return true;
-		}
-		if (k < i->k)
-		{
-			i = i->left;
-		}
-		else
-		{
-			i = i->right;
-		}
-	}
+	
 	return false;
 }
 
