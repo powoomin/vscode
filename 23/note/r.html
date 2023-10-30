@@ -1,0 +1,31 @@
+<!--
+if 문을 사용하여 학점을 구하라
+1. 점수와 타입
+    - pf or grade
+    - 각각 점수별 (p/f) or (A,B,C,D,F)
+-->
+<html>
+    <meta charset="utf-8">
+    <body>
+        <h1>학점 성적 계산기</h1> <br>
+        <script>
+            var score, kind;
+            prompt
+            score = prompt("자신의 키를 미터 단위로 입력하세요");
+            kind = prompt("자신의 몸무게를 입력하세요");
+
+            function calculators(s, k) {
+                if (s >= 90) console.log("A");
+                else if (s >= 80) console.log("B");
+                else if (s >= 70) console.log("C");
+                else if (s >= 60) console.log("D");
+                else console.log("F");
+
+                return null;
+            }
+            document.write("체칠량 지수 : <font color-red><b>" + bmi(score, kind)+ "</b></font> 입니다");
+
+        </script>
+    </body>
+
+</html>
