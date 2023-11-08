@@ -36,6 +36,30 @@ Yes
 #include <stdio.h>
 int main()
 {
-    
+    int input_price;
+    int count;
+    int out_price;
+    int sum_price=0;
+
+    scanf("%d", &input_price);
+    scanf("%d", &count);
+
+    for(int i=0; i<count; i++)
+    {
+        int j;
+        scanf("%d", &out_price);
+        scanf("%d", &j);
+
+        sum_price = sum_price + out_price * j;
+    }
+
+    if(input_price == sum_price) 
+    {
+        printf("Yes");
+    }
+    else 
+    {
+        printf("No");
+    }
     return 0;
 }
