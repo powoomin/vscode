@@ -1,6 +1,7 @@
 #include <stdio.h>
-
-void print_star() // 2/21 그냥 별 찍기
+// 2/21 
+// 그냥 3개월만에 다시 코딩하고 싶어서 코딩한 별 찍기
+void print_star() 
 {
     printf("Hellow World :D\n");
 
