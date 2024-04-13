@@ -17,9 +17,9 @@
  03 출력
  N번까지 모든 바구니에 변경된 공번호를 출력한다.
  */
-#include <stdio.h>
+#include "bj_0413_Input_Boll.h"
 
-int main(void)
+void v1()
 {
     //01
     int n,m;
@@ -29,7 +29,7 @@ int main(void)
     {
         basket[i] = 0;
     }
-
+    
     //02
     int i,j,k;
     for(int i1=0; i1<m; i1++)
@@ -46,6 +46,4 @@ int main(void)
     {
         printf("%d ", basket[i]);
     }
-    
-    return 0;
 }

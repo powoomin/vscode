@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		F6DBBB1B2BCA066B0099C9B6 /* 0413_Input_Boll.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = 0413_Input_Boll.c; sourceTree = "<group>"; };
+		F6DBBB1B2BCA066B0099C9B6 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		F6DBBB1F2BCA18D10099C9B6 /* bj_0413_Input_Boll.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bj_0413_Input_Boll.h; sourceTree = "<group>"; };
+		F6DBBB202BCA18D10099C9B6 /* v1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = v1.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
 		F6DBBB142BCA06270099C9B6 = {
 			isa = PBXGroup;
 			children = (
-				F6DBBB1B2BCA066B0099C9B6 /* 0413_Input_Boll.c */,
+				F6DBBB1F2BCA18D10099C9B6 /* bj_0413_Input_Boll.h */,
+				F6DBBB202BCA18D10099C9B6 /* v1.c */,
+				F6DBBB1B2BCA066B0099C9B6 /* main.c */,
 			);
 			sourceTree = "<group>";
 		};
@@ -27,7 +31,7 @@
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1530;
 			};
-			buildConfigurationList = F6DBBB182BCA06270099C9B6 /* Build configuration list for PBXProject "Baekjoon" */;
+			buildConfigurationList = F6DBBB182BCA06270099C9B6 /* Build configuration list for PBXProject "bj_0413_Input_Boll" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -59,7 +63,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F6DBBB182BCA06270099C9B6 /* Build configuration list for PBXProject "Baekjoon" */ = {
+		F6DBBB182BCA06270099C9B6 /* Build configuration list for PBXProject "bj_0413_Input_Boll" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F6DBBB192BCA06270099C9B6 /* Debug */,
